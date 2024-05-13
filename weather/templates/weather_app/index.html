@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+        <link rel = 'stylesheet' href = "{% static 'style.css' %}">
+    </head>
+    <body>
+        <form method = "post">
+            {% csrf_token %}
+            <input type ="text" name= "city1" placeholder = "City">
+            <button type ="submit">Get Weather Data</button>
+
+        </form>
+        
+
+            {% if weather_data1 %}
+            <div class ="city-container">
+
+                <h1>{{weather_data1.city }}</h1>
+                <h2>{{weather_data1.temperature }} Celsius</h2>
+                <p>{{ weather_data1.description }}</p>
+                <img src = "http://openweathermap.org/img/w/{{weather_data1.icon}}.png">
+
+            </div>
+            {% endif %}
+        
+    </body>
+</html>
